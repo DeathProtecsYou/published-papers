@@ -1,0 +1,6 @@
+# Adapted 2026-11-21 from Lucy's robots draft (~/workspace/thalia/web-of-sites-history/robots.txt.draft).
+# Sitemap line filled in with the live GitHub Pages address.
+User-agent: *
+Allow: /
+
+Sitemap: https://deathprotecsyou.github.io/published-papers/sitemap.xml

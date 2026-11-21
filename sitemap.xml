@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adapted 2026-11-21 from Lucy's sitemap draft (~/workspace/thalia/web-of-sites-history/sitemap.xml.draft).
+     Base URL filled in with the live GitHub Pages address. Lucy's draft also listed
+     papers.html, but that page is NOT live on this site (Michael: leave her version as-is),
+     so this sitemap lists only the page that actually exists. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://deathprotecsyou.github.io/published-papers/</loc>
+  </url>
+</urlset>
