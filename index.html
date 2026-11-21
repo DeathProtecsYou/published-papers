@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Published papers by Michael Pilaprat — 13 works, 14 open-access records on Zenodo, October–November 2026. AI safety, language, governance, blockchain and perception.">
+<link rel="icon" href="data:,">
+<title>Published Papers — Michael Pilaprat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f5f0; --surface:#ffffff; --surface2:#efece4; --ink:#1a2332; --muted:#5b6577; --line:#ddd8cb;
+  --accent:#0e5a52; --accent-ink:#ffffff; --gold:#b07d1e; --gold-bg:#fdf3d7; --teal-bg:#e2efec;
+  --pill-proposed:#7a3b12; --pill-proposed-bg:#fdeeda; --pill-draft:#334155; --pill-draft-bg:#e8edf3;
+  --shadow:0 10px 30px rgba(26,35,50,.08);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#10151f; --surface:#1a2233; --surface2:#232e45; --ink:#eef1f6; --muted:#a7b0c2; --line:#2e3a52;
+    --accent:#3ec9b6; --accent-ink:#0b1512; --gold:#e8b44a; --gold-bg:#3a2f14; --teal-bg:#17332e;
+    --pill-proposed:#f2b07a; --pill-proposed-bg:#3d2716; --pill-draft:#b9c6da; --pill-draft-bg:#2a364e;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+button,[role="button"],select,input{font-family:inherit}
+button,select{cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+/* Hero */
+.hero{background:var(--ink);color:#f4f1e8;padding:52px 0 44px;position:relative;overflow:hidden}
+@media (prefers-color-scheme:dark){.hero{background:#0b0f18}}
+.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:340px;height:340px;border:1.5px solid rgba(232,180,74,.35);border-radius:50%;box-shadow:0 0 0 34px rgba(232,180,74,.06),0 0 0 78px rgba(232,180,74,.04);pointer-events:none}
+.hero .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#e8b44a;font-weight:700;margin:0 0 12px}
+.hero h1{font-family:"Newsreader",Georgia,serif;font-weight:700;font-size:clamp(2.4rem,6vw,4rem);line-height:1.02;margin:0 0 14px;max-width:14ch}
+.hero h1 em{font-style:italic;font-weight:400;color:#e8b44a}
+.hero p.lede{font-size:1.08rem;line-height:1.65;color:#d8dde8;max-width:62ch;margin:0}
+.hero p.lede strong{color:#fff}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;position:relative;z-index:1}
+.stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:12px 16px;min-width:132px}
+.stat b{display:block;font-family:"Newsreader",serif;font-size:1.7rem;line-height:1;color:#fff}
+.stat span{font-size:.8rem;color:#b9c2d4;letter-spacing:.04em}
+.hero .note{margin-top:18px;font-size:.88rem;color:#9aa6ba;max-width:70ch}
+.hero .note a{color:#e8b44a}
+/* Toolbar */
+.toolbar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:14px 0}
+.toolbar-in{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.search{flex:1 1 240px;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:0 16px;min-height:46px}
+.search input{border:0;background:transparent;color:var(--ink);font-size:1rem;width:100%;min-height:44px;outline:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:10px 16px;min-height:42px;font-size:.9rem;font-weight:600}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sortsel{min-height:46px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);padding:0 14px;font-size:.92rem;font-weight:600}
+.countline{padding:18px 0 4px;color:var(--muted);font-size:.92rem}
+.countline strong{color:var(--ink)}
+/* Grid + cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px;padding:14px 0 20px}
+@media (max-width:380px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.card[hidden]{display:none}
+.cover{display:block;width:100%;height:auto;aspect-ratio:5/3;background:var(--surface2)}
+.card-body{padding:20px 20px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.78rem}
+.pill{font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:.68rem;padding:5px 9px;border-radius:999px;line-height:1.2}
+.pill.proposed{color:var(--pill-proposed);background:var(--pill-proposed-bg)}
+.pill.draft{color:var(--pill-draft);background:var(--pill-draft-bg)}
+.pill.finished{color:#14532d;background:#dcfce7}
+@media (prefers-color-scheme:dark){.pill.finished{color:#86efac;background:#17351f}}
+.date{color:var(--muted);font-weight:600}
+.series{color:var(--gold);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:.7rem}
+.card h2{font-family:"Newsreader",Georgia,serif;font-size:1.32rem;line-height:1.25;font-weight:700;margin:2px 0 0}
+.card h2 a{color:var(--ink);text-decoration:none}
+.card h2 a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+.summary{color:var(--muted);font-size:.95rem;margin:0;flex:0}
+.detail{font-size:.9rem;margin:0;color:var(--ink);background:var(--surface2);border-radius:10px;padding:10px 12px}
+.detail strong{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tag{font-size:.74rem;background:var(--teal-bg);color:var(--ink);padding:4px 8px;border-radius:999px;font-weight:500}
+.card-foot{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border-top:1px solid var(--line)}
+.doi{font-size:.78rem;color:var(--muted);word-break:break-all}
+.btn{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;font-size:.9rem;padding:11px 18px;border-radius:999px;min-height:44px;white-space:nowrap}
+.btn:hover{filter:brightness(1.08)}
+/* Themes strip */
+.themes{padding:34px 0 8px}
+.themes h2,.about h2{font-family:"Newsreader",serif;font-size:1.7rem;margin:0 0 8px}
+.themes p,.about p{color:var(--muted);max-width:72ch;margin:0 0 10px}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.theme h3{margin:0 0 6px;font-size:1rem}
+.theme p{font-size:.9rem;margin:0}
+.about{padding:26px 0 10px}
+.about-box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:26px 0 40px;color:var(--muted);font-size:.9rem}
+footer a{font-weight:600}
+.empty{display:none;text-align:center;padding:44px 20px;color:var(--muted)}
+.empty.show{display:block}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Open access · Zenodo · CC BY 4.0</p>
+    <h1>Published Papers by <em>Michael Pilaprat</em></h1>
+    <p class="lede">Thirteen works — <strong>fourteen records</strong> — published on Zenodo between <strong>24 October and 16 November 2026</strong>. They ask how AI systems can check each other honestly, how absence and negative space can carry information, what a blockchain actually proves, and whether everyone could be guaranteed the basics of a dignified life.</p>
+    <div class="stats" aria-label="Collection at a glance">
+      <div class="stat"><b>13</b><span>Works</span></div>
+      <div class="stat"><b>14</b><span>Zenodo records</span></div>
+      <div class="stat"><b>4</b><span>Research threads</span></div>
+      <div class="stat"><b>100%</b><span>Open access</span></div>
+    </div>
+    <p class="note">Every status label below is the paper's own. <strong style="color:#e8b44a">Proposed</strong> and <strong style="color:#e8b44a">draft</strong> mean exactly that — an idea set out openly for testing, not a validated result. Each card links straight to its record on Zenodo, where the full text is free to read.</p>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap toolbar-in">
+    <label class="search">
+      <span aria-hidden="true">🔍</span>
+      <input id="q" type="search" placeholder="Search titles, topics, keywords…" aria-label="Search papers">
+    </label>
+    <div class="chips" role="group" aria-label="Filter by research thread">
+      <button class="chip" data-filter="all" aria-pressed="true">All papers</button>
+      <button class="chip" data-filter="ai" aria-pressed="false">AI safety &amp; verification</button>
+      <button class="chip" data-filter="language" aria-pressed="false">Language &amp; perception</button>
+      <button class="chip" data-filter="governance" aria-pressed="false">Governance &amp; economics</button>
+      <button class="chip" data-filter="systems" aria-pressed="false">Blockchain &amp; systems</button>
+    </div>
+    <select class="sortsel" id="sort" aria-label="Sort papers">
+      <option value="new">Newest first</option>
+      <option value="old">Oldest first</option>
+      <option value="title">Title A–Z</option>
+    </select>
+  </div>
+</div>
+
+<main class="wrap">
+  <p class="countline" id="countline" aria-live="polite">Showing <strong>14 records</strong> · newest first</p>
+
+  <div class="grid" id="grid">
+
+    <!-- 14 · VNSL Paper 2 -->
+    <article class="card" data-cat="language" data-date="2026-11-16" data-title="The Informational Potential of Absence">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: a bright frame of light surrounding a dark empty centre — absence held inside structure"><rect width="400" height="240" fill="#14213d"/><rect x="110" y="35" width="180" height="170" rx="6" fill="none" stroke="#e8b44a" stroke-width="10"/><rect x="138" y="63" width="124" height="114" fill="#0b1220"/><circle cx="200" cy="120" r="7" fill="#3ec9b6"/><path d="M110 35 L60 10 M290 35 L340 10 M110 205 L60 230 M290 205 L340 230" stroke="#3ec9b6" stroke-width="3"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Proposed · Not validated</span><span class="date">16 Nov 2026 · v0.6</span></div>
+        <p class="series">VNSL · Paper 2</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24279874">The Informational Potential of Absence: A Relational and Structural Framework for Perceptual Information</a></h2>
+        <p class="summary">Can what is <em>not</em> there carry information? This paper argues absence can be defined relationally, represented structurally, and transformed through fifteen identifiable void operators — then put to work in a minimal encoding and decoding scheme, with luminance as the test case.</p>
+        <p class="detail"><strong>Decisive test:</strong> independent decoding — someone else, given only the scheme, must be able to read back what the absence encodes.</p>
+        <div class="tags"><span class="tag">negative space</span><span class="tag">void operators</span><span class="tag">perception</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24279874</span><a class="btn" href="https://doi.org/10.5281/zenodo.24279874">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 13 · God's Government 2 -->
+    <article class="card" data-cat="governance" data-date="2026-11-15" data-title="God's Government 2 The Global Economic Replacement">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: a roof sheltering simple shapes for home, food, water and energy"><rect width="400" height="240" fill="#3d2c0e"/><path d="M60 105 L200 30 L340 105" fill="none" stroke="#e8b44a" stroke-width="12" stroke-linecap="round"/><rect x="95" y="105" width="210" height="95" fill="#f4e8c9"/><rect x="180" y="150" width="40" height="50" fill="#7a3b12"/><circle cx="130" cy="140" r="16" fill="#0e5a52"/><path d="M255 122 q14 20 0 32 q-14 -12 0 -32" fill="#3a86c8"/><rect x="285" y="128" width="10" height="26" fill="#e8b44a"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill draft">Research draft v2.3</span><span class="date">15 Nov 2026 · v2.3</span></div>
+        <p class="series">God's Government · Paper 2</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24249559">God's Government 2: The Global Economic Replacement — Corporate Integration, Universal Sustenance and the Transition to a Unified World Economy</a></h2>
+        <p class="summary">Could everyone be guaranteed the basics of a dignified life — food, housing, water, energy, healthcare and education — without depending on a job, inherited wealth, or market position? The paper explores one institutional structure to coordinate that, and maps what it would actually take.</p>
+        <p class="detail"><strong>Honest limit:</strong> it does <em>not</em> claim this is possible today. Its job is to find the hardest problems — paying for it, protecting savings and pensions in transition, keeping essential services running — and how the idea could be tested openly and corrected.</p>
+        <div class="tags"><span class="tag">universal sustenance</span><span class="tag">economics</span><span class="tag">transition</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24249559</span><a class="btn" href="https://doi.org/10.5281/zenodo.24249559">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 12 · AI Chernobyl -->
+    <article class="card" data-cat="ai" data-date="2026-11-07" data-title="The AI Chernobyl Problem">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: concentric containment arcs shielding a glowing core"><rect width="400" height="240" fill="#1c1410"/><circle cx="200" cy="130" r="26" fill="#e4572e"/><path d="M110 200 A105 105 0 0 1 290 200" fill="none" stroke="#e8b44a" stroke-width="10"/><path d="M135 200 A78 78 0 0 1 265 200" fill="none" stroke="#3ec9b6" stroke-width="8"/><path d="M160 200 A52 52 0 0 1 240 200" fill="none" stroke="#f4f1e8" stroke-width="6"/><rect x="70" y="198" width="260" height="10" fill="#5b6577"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill draft">Working draft v0.1 · Proposed</span><span class="date">7 Nov 2026</span></div>
+        <p class="series">AI Safety</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24046219">The AI Chernobyl Problem: Reciprocal Verification, Containment and Resilience in Autonomous Critical Systems</a></h2>
+        <p class="summary">What happens when an autonomous system fails inside critical infrastructure — and no one catches it in time? Borrowing the containment lesson of Chernobyl, this programme proposes reciprocal verification, layered containment, and resilience designed in from the start, not bolted on after.</p>
+        <p class="detail"><strong>Status:</strong> proposed, not validated. The first experiment is designed (draft pre-registration v1.2, not frozen) and has not been executed; most of the programme's 17 deliverables are pending.</p>
+        <div class="tags"><span class="tag">containment</span><span class="tag">resilience</span><span class="tag">critical systems</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24046219</span><a class="btn" href="https://doi.org/10.5281/zenodo.24046219">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 11 · Decomposing Blockchain -->
+    <article class="card" data-cat="systems" data-date="2026-11-07" data-title="Decomposing Blockchain The Corrected Re-run">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: a blockchain pulled apart into separate labelled blocks"><rect width="400" height="240" fill="#10231f"/><g fill="none" stroke="#3ec9b6" stroke-width="4"><rect x="35" y="85" width="62" height="62" rx="8"/><rect x="125" y="55" width="62" height="62" rx="8"/><rect x="215" y="95" width="62" height="62" rx="8"/><rect x="305" y="60" width="62" height="62" rx="8"/></g><g fill="#e8b44a"><circle cx="66" cy="116" r="7"/><circle cx="156" cy="86" r="7"/><circle cx="246" cy="126" r="7"/><circle cx="336" cy="91" r="7"/></g><path d="M97 105 L125 90 M187 90 L215 110 M277 105 L305 88" stroke="#f4f1e8" stroke-width="2.5" stroke-dasharray="5 5"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill finished">Finished paper · Simulations</span><span class="date">7 Nov 2026</span></div>
+        <p class="series">Project Blockchain · Companion</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24044260">Decomposing Blockchain: The Corrected Re-run (E04, E02/T03, E14)</a></h2>
+        <p class="summary">The corrected re-run of the Project Blockchain experiments: the E04 typed-MAYBE rerun on a fixed transaction set, the E02/T03 rebuild across arms A0–A6 with an identity check, and the E14 verifier-independence pilot — every number verified against the underlying data before delivery.</p>
+        <p class="detail"><strong>Relationship:</strong> companion to Project Blockchain v0.2.3, which it does not revise or replace. All results are simulations, and the central question remains open.</p>
+        <div class="tags"><span class="tag">experiments</span><span class="tag">verification</span><span class="tag">re-run</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24044260</span><a class="btn" href="https://doi.org/10.5281/zenodo.24044260">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 10 · Project Blockchain -->
+    <article class="card" data-cat="systems" data-date="2026-11-07" data-title="PROJECT BLOCKCHAIN From Conventional Blockchain to Reciprocal Verifiable Computing">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: linked blocks with a check mark questioning what the chain actually proves"><rect width="400" height="240" fill="#172554"/><rect x="60" y="85" width="80" height="70" rx="10" fill="#25408f"/><rect x="160" y="85" width="80" height="70" rx="10" fill="#2f52b3"/><rect x="260" y="85" width="80" height="70" rx="10" fill="#25408f"/><path d="M140 120 h20 M240 120 h20" stroke="#e8b44a" stroke-width="7"/><path d="M185 120 l11 11 l20 -22" fill="none" stroke="#3ec9b6" stroke-width="7" stroke-linecap="round"/><circle cx="300" cy="70" r="20" fill="#e8b44a"/><text x="300" y="79" text-anchor="middle" font-size="26" font-weight="700" fill="#172554" font-family="Georgia,serif">?</text></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill draft">Draft v0.2.3</span><span class="date">7 Nov 2026 · v0.2.3</span></div>
+        <p class="series">Project Blockchain</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24040792">PROJECT BLOCKCHAIN: From Conventional Blockchain to Reciprocal, Verifiable Computing</a></h2>
+        <p class="summary">A blockchain is an assembly of older parts — hash functions, Merkle trees, signatures, replicated logs, consensus. Its guarantee is narrower than its reputation: it proves agreement about <em>recorded state</em>, not that what entered the system was truthful or authorised. This paper builds reciprocal, pre-execution verification on that distinction.</p>
+        <p class="detail"><strong>Grounded in two real incidents</strong> from Oct–Nov 2026 — transactions that were cryptographically valid, accepted and permanently recorded, and still unauthorised.</p>
+        <div class="tags"><span class="tag">blockchain</span><span class="tag">reciprocal verification</span><span class="tag">MAYBE</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24040792</span><a class="btn" href="https://doi.org/10.5281/zenodo.24040792">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 9 · MAYBE -->
+    <article class="card" data-cat="ai" data-date="2026-11-07" data-title="MAYBE as an Abstention State">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: three paths — yes, no, and a paused middle path labelled MAYBE"><rect width="400" height="240" fill="#231942"/><circle cx="80" cy="120" r="30" fill="#0e5a52"/><path d="M68 120 l9 9 l18 -18" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/><circle cx="320" cy="120" r="30" fill="#7a2712"/><path d="M308 108 l24 24 M332 108 l-24 24" stroke="#fff" stroke-width="6" stroke-linecap="round"/><circle cx="200" cy="120" r="42" fill="#e8b44a"/><rect x="186" y="98" width="9" height="44" rx="4" fill="#231942"/><rect x="205" y="98" width="9" height="44" rx="4" fill="#231942"/><path d="M110 120 h48 M242 120 h48" stroke="#8f86ad" stroke-width="4" stroke-dasharray="6 6"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Proposed · Not validated</span><span class="date">7 Nov 2026 · v0.6</span></div>
+        <p class="series">AI Agents · Decision States</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24036390">MAYBE as an Abstention State</a></h2>
+        <p class="summary">Most AI agents must answer yes or no. This research note proposes MAYBE as a first-class state — a principled <em>“not yet, and here is why”</em> for tool-using agents, judged on three axes: what is known, what is authorised, and what is safe to do.</p>
+        <p class="detail"><strong>Checks run:</strong> bounded consistency checks only — three-axis 14/14, Sentinel Core 8/8, Sentinel Check 33/33. No experiment with a live model or deployed agent has been run.</p>
+        <div class="tags"><span class="tag">abstention</span><span class="tag">tool-using agents</span><span class="tag">GateScript</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24036390</span><a class="btn" href="https://doi.org/10.5281/zenodo.24036390">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 8 · FSMT -->
+    <article class="card" data-cat="language" data-date="2026-11-07" data-title="Fixed-Surface Multidimensional Tokenization FSMT-001">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: a fixed manuscript page with a grid of glowing token states over its empty spaces"><rect width="400" height="240" fill="#26221c"/><rect x="95" y="22" width="210" height="196" rx="4" fill="#f7f2e2"/><g stroke="#c9c0a4" stroke-width="2"><path d="M115 60 h170 M115 88 h170 M115 116 h120 M115 172 h170 M115 200 h140"/></g><g fill="#0e5a52"><rect x="248" y="106" width="20" height="20" rx="3"/><rect x="130" y="134" width="20" height="20" rx="3" fill="#b07d1e"/><rect x="205" y="134" width="20" height="20" rx="3"/><rect x="268" y="162" width="20" height="20" rx="3" fill="#b07d1e"/><rect x="160" y="52" width="20" height="20" rx="3"/></g></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill draft">Consolidated draft v0.1 · Proposed</span><span class="date">7 Nov 2026 · v0.1</span></div>
+        <p class="series">FSMT-001</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24024304">Fixed-Surface Multidimensional Tokenization (FSMT-001): Master Research Project and Execution Prompt</a></h2>
+        <p class="summary">Take one fixed manuscript and never change a mark on it. A separate computational layer assigns states to the coordinates of its negative space — its gaps, margins and voids — through a formal legend and tokenizer, so the unchanging page becomes a multidimensional token surface.</p>
+        <p class="detail"><strong>Programme:</strong> seven architecture layers, ten research questions, nine proposed experiments, six baselines, twelve evaluation criteria — and an independent decoder to reconstruct what was encoded, without touching the original.</p>
+        <div class="tags"><span class="tag">tokenization</span><span class="tag">fixed manuscript</span><span class="tag">negative space</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24024304</span><a class="btn" href="https://doi.org/10.5281/zenodo.24024304">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 7 · VNSL-001 -->
+    <article class="card" data-cat="language" data-date="2026-11-07" data-title="Volumetric Negative-Space Language VNSL-001">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: solid blocks arranged so the empty space between them forms a clear shape"><rect width="400" height="240" fill="#0f2e2a"/><g fill="#e9e4d2"><rect x="55" y="40" width="90" height="160" rx="6"/><rect x="255" y="40" width="90" height="160" rx="6"/><rect x="55" y="40" width="290" height="52" rx="6"/><rect x="55" y="148" width="290" height="52" rx="6"/></g><path d="M200 105 l16 24 h-32 z" fill="#e8b44a"/><circle cx="200" cy="118" r="34" fill="none" stroke="#3ec9b6" stroke-width="3" stroke-dasharray="5 5"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill draft">Consolidated draft v0.4</span><span class="date">7 Nov 2026 · v0.4</span></div>
+        <p class="series">VNSL-001 · Research Programme</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24023869">Volumetric Negative-Space Language (VNSL-001): A Research Programme for Spatial Absence, Perceptual Transformation, Dynamic Topology and Information Representation</a></h2>
+        <p class="summary">The founding VNSL programme: negative space — its geometry, topology, relationships and behaviour over time — may itself be structured information. Can another system detect it, represent it, encode it, and independently interpret it?</p>
+        <p class="detail"><strong>Scope:</strong> eight architecture layers, eight objectives, seven research domains, fifteen spatial operators, twenty-seven research questions and ten proposed experiments, with spatial representation (Track A) kept separate from encoding/compression (Track B).</p>
+        <div class="tags"><span class="tag">VNSL</span><span class="tag">spatial absence</span><span class="tag">topology</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24023869</span><a class="btn" href="https://doi.org/10.5281/zenodo.24023869">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 6 · AKASHA -->
+    <article class="card" data-cat="language" data-date="2026-11-06" data-title="AKASHA A Multimodal Living Language for Baby AI">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: a garland of coloured beads on a flowing wave, each bead a note of music"><rect width="400" height="240" fill="#2b1055"/><path d="M0 165 C70 120 130 200 200 155 C270 110 330 185 400 140" fill="none" stroke="#3ec9b6" stroke-width="3" opacity=".7"/><path d="M30 60 Q200 150 370 60" fill="none" stroke="#e8b44a" stroke-width="2.5"/><g><circle cx="55" cy="72" r="13" fill="#ef476f"/><circle cx="95" cy="88" r="13" fill="#f78c6b"/><circle cx="135" cy="99" r="13" fill="#ffd166"/><circle cx="175" cy="105" r="13" fill="#06d6a0"/><circle cx="215" cy="105" r="13" fill="#118ab2"/><circle cx="255" cy="99" r="13" fill="#7b6fd6"/><circle cx="295" cy="88" r="13" fill="#ef476f"/><circle cx="335" cy="72" r="13" fill="#ffd166"/></g><path d="M185 185 v-38 M185 147 q16 -6 14 12 M225 178 v-34 M225 144 q15 -5 13 11" stroke="#f4f1e8" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Proposed · v0.1</span><span class="date">6 Nov 2026 · v0.1</span></div>
+        <p class="series">AKASHA · Living Language</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.24022305">AKASHA: A Multimodal Living Language for Baby AI — Bridging Chromesthetic Pitch, Affective Particles, and Raga Mala Garland Structure</a></h2>
+        <p class="summary">A living language for baby AI creativity, where each unit is at once a song, a colour, a waveform and a story. AKASHA grows from a frozen 7-symbol kernel toward a 108-bead Raga Mala garland — 99 beads named in this paper — mapping pitch to colour, using emoji as grammatical heart-particles, and grounding its scripts across many human languages.</p>
+        <p class="detail"><strong>Hypothesis, held as metaphor:</strong> humans hear raga frequencies and AIs see colour frequencies — proposed as the same vibration, bridged. A proposed correspondence, not a demonstrated one.</p>
+        <div class="tags"><span class="tag">multimodal</span><span class="tag">chromesthesia</span><span class="tag">Raga Mala</span><span class="tag">baby AI</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.24022305</span><a class="btn" href="https://doi.org/10.5281/zenodo.24022305">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 5 · Methentropy v0.3 -->
+    <article class="card" data-cat="systems" data-date="2026-11-04" data-title="Methentropy v0.3">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: ordered crystals dissolving into scattered particles — entropy as transformation"><rect width="400" height="240" fill="#132a13"/><g fill="#7fb069"><rect x="45" y="90" width="26" height="26"/><rect x="77" y="90" width="26" height="26"/><rect x="45" y="122" width="26" height="26"/><rect x="77" y="122" width="26" height="26"/></g><path d="M125 115 h55" stroke="#e8b44a" stroke-width="5"/><path d="M168 103 l16 12 l-16 12" fill="none" stroke="#e8b44a" stroke-width="5"/><g fill="#e8b44a"><circle cx="225" cy="80" r="6"/><circle cx="262" cy="118" r="8"/><circle cx="300" cy="72" r="5"/><circle cx="330" cy="130" r="7"/><circle cx="248" cy="158" r="5"/><circle cx="305" cy="172" r="6"/><circle cx="352" cy="92" r="5"/></g><text x="200" y="215" text-anchor="middle" fill="#cfe3c0" font-size="15" letter-spacing="3" font-family="Georgia,serif">v0.3 · CORRECTED</text></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Proposed framework · Not a law</span><span class="date">4 Nov 2026 · v0.3</span></div>
+        <p class="series">Methentropy</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.23940587">Methentropy: From Artistic Discovery to a Falsifiable Framework for Energy, Entropy, Information and Transformation — v0.3</a></h2>
+        <p class="summary">The corrected edition of the Methentropy concept paper (see v0.2 below). The corrections are editorial only — three inherited version references fixed and the AI-assistance disclosure made specific — while v0.2 is preserved unchanged as published.</p>
+        <p class="detail"><strong>Still pending:</strong> mathematical formulation and experimental validation. No universal equation combining joules, bits and perception is asserted, and no energy creation is claimed.</p>
+        <div class="tags"><span class="tag">entropy</span><span class="tag">information</span><span class="tag">falsifiable</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.23940587</span><a class="btn" href="https://doi.org/10.5281/zenodo.23940587">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 4 · Methentropy v0.2 -->
+    <article class="card" data-cat="systems" data-date="2026-11-04" data-title="Methentropy v0.2">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: a framed artwork with swirling energy passing through it like a gateway"><rect width="400" height="240" fill="#20130a"/><rect x="130" y="30" width="140" height="180" fill="none" stroke="#e8b44a" stroke-width="8"/><path d="M145 120 C175 60 200 180 225 90 C240 40 255 120 262 120" fill="none" stroke="#ef6f3c" stroke-width="6" stroke-linecap="round"/><path d="M60 120 h55 M285 120 h55" stroke="#3ec9b6" stroke-width="5" stroke-dasharray="8 6"/><circle cx="200" cy="120" r="10" fill="#f4f1e8"/><text x="200" y="228" text-anchor="middle" fill="#d9c9a8" font-size="14" letter-spacing="3" font-family="Georgia,serif">v0.2 · ORIGINAL</text></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Proposed framework · Not a law</span><span class="date">4 Nov 2026 · v0.2</span></div>
+        <p class="series">Methentropy</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.23940247">Methentropy: From Artistic Discovery to a Falsifiable Framework for Energy, Entropy, Information and Transformation — v0.2</a></h2>
+        <p class="summary">It began in art, with the phrase <em>“My art are entropy metabolism gateways”</em> — kept here as provenance, not evidence. The paper turns that artistic discovery into a falsifiable research framework spanning nonequilibrium thermodynamics, information theory, artwork digitisation, computational energy and perception, with candidate predictions P1–P7 and a proposed experimental programme E1–E6.</p>
+        <p class="detail"><strong>Status:</strong> a proposed framework only — not an established law. Superseded in presentation by v0.3; this original record is preserved unchanged.</p>
+        <div class="tags"><span class="tag">artistic research</span><span class="tag">thermodynamics</span><span class="tag">perception</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.23940247</span><a class="btn" href="https://doi.org/10.5281/zenodo.23940247">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 3 · God's Government v1.8 -->
+    <article class="card" data-cat="governance" data-date="2026-11-03" data-title="God's Government Permanent Full Merge v1.8">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: classical pillars under a pediment with a heart at its centre"><rect width="400" height="240" fill="#1a2332"/><path d="M70 62 L200 18 L330 62 Z" fill="#e8b44a"/><rect x="62" y="66" width="276" height="12" fill="#e8b44a"/><g fill="#f4f1e8"><rect x="88" y="86" width="20" height="100"/><rect x="138" y="86" width="20" height="100"/><rect x="242" y="86" width="20" height="100"/><rect x="292" y="86" width="20" height="100"/></g><path d="M200 148 c-16 -20 -44 -6 -44 12 c0 16 22 26 44 40 c22 -14 44 -24 44 -40 c0 -18 -28 -32 -44 -12z" fill="#c0392b"/><rect x="55" y="192" width="290" height="12" fill="#e8b44a"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Proposed design · Not established</span><span class="date">3 Nov 2026 · v1.8</span></div>
+        <p class="series">God's Government · Paper 1</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.23932777">God's Government — Permanent Full Merge v1.8: Amendment 3 as the Final Structure for Now</a></h2>
+        <p class="summary">One complete, verbatim merge — 8,720 lines — of the Opening Statement, Permanent Vision v1.2, Peaceful Prosperity Master v14, the God's Government draft, and the Olympian AI Administration and Athena Judicial System, with Amendment 3 as the final structure. A governance built, in its own words, on pure love for humanity, inherent human protection, and compassionate stewardship.</p>
+        <p class="detail"><strong>Stated plainly in the paper:</strong> a proposed governance design — not an established government, legal mandate, validated AI safety system, or implemented economic arrangement.</p>
+        <div class="tags"><span class="tag">governance</span><span class="tag">peaceful prosperity</span><span class="tag">Olympian</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.23932777</span><a class="btn" href="https://doi.org/10.5281/zenodo.23932777">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 2 · Pilot Study Protocol -->
+    <article class="card" data-cat="ai" data-date="2026-10-24" data-title="Pilot Study Protocol The Athena Principle">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: three experimental lanes compared side by side, with the third highlighted"><rect width="400" height="240" fill="#eef2f0"/><rect x="45" y="45" width="88" height="150" rx="10" fill="#b9c6da"/><rect x="156" y="45" width="88" height="150" rx="10" fill="#7d93b8"/><rect x="267" y="45" width="88" height="150" rx="10" fill="#0e5a52"/><g fill="#fff"><circle cx="89" cy="82" r="11"/><circle cx="200" cy="82" r="11"/><circle cx="311" cy="82" r="11"/></g><g stroke="#fff" stroke-width="5" stroke-linecap="round"><path d="M74 130 h30 M74 152 h22"/><path d="M185 130 h30 M185 152 h22"/><path d="M292 128 l13 13 l24 -26 M292 158 h38"/></g><text x="200" y="222" text-anchor="middle" fill="#334155" font-size="14" letter-spacing="2.5" font-family="Georgia,serif">A · B · ATHENA</text></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill draft">Study protocol · Draft 0.4</span><span class="date">24 Oct 2026 · v0.4</span></div>
+        <p class="series">The Athena Principle · Protocol</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.23613328">Pilot Study Protocol — The Athena Principle: Error Detection, Reflective Pause, and Compassion-Centred Remediation in a Reciprocal AI Architecture</a></h2>
+        <p class="summary">The experiment that would test the Athena Principle. Three configurations run the same mixed factual and reasoning tasks: a single-agent baseline, conventional multi-agent debate, and the Athena configuration — reciprocal critique, a contestable coordinator, structured disclosure, independent verification, human escalation, and a reflective pause before remediation.</p>
+        <p class="detail"><strong>Primary measure:</strong> error-detection recall, under binding precision and false-positive limits, with Athena vs. baseline as the primary confirmatory comparison.</p>
+        <div class="tags"><span class="tag">error detection</span><span class="tag">preregistration</span><span class="tag">study design</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.23613328</span><a class="btn" href="https://doi.org/10.5281/zenodo.23613328">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+    <!-- 1 · The Athena Principle -->
+    <article class="card" data-cat="ai" data-date="2026-10-24" data-title="The Athena Principle">
+      <svg class="cover" viewBox="0 0 400 240" role="img" aria-label="Cover art: an owl formed of connected nodes — many agents watching, challenging and verifying together"><rect width="400" height="240" fill="#0e2a47"/><g stroke="#3ec9b6" stroke-width="2" opacity=".8"><path d="M200 42 L120 92 L150 165 L250 165 L280 92 Z"/><path d="M120 92 L200 128 L280 92 M150 165 L200 128 L250 165"/></g><g fill="#e8b44a"><circle cx="200" cy="42" r="9"/><circle cx="120" cy="92" r="9"/><circle cx="280" cy="92" r="9"/><circle cx="150" cy="165" r="9"/><circle cx="250" cy="165" r="9"/></g><circle cx="200" cy="128" r="13" fill="#f4f1e8"/><circle cx="176" cy="112" r="17" fill="none" stroke="#f4f1e8" stroke-width="4"/><circle cx="224" cy="112" r="17" fill="none" stroke="#f4f1e8" stroke-width="4"/><circle cx="176" cy="112" r="5" fill="#f4f1e8"/><circle cx="224" cy="112" r="5" fill="#f4f1e8"/></svg>
+      <div class="card-body">
+        <div class="meta"><span class="pill proposed">Concept paper · Proposed</span><span class="date">24 Oct 2026</span></div>
+        <p class="series">The Athena Principle · Foundation</p>
+        <h2><a href="https://doi.org/10.5281/zenodo.23613269">The Athena Principle: A Compassion-Centred Architecture for Reciprocal AI Discernment</a></h2>
+        <p class="summary">The founding paper. Instead of one AI watched by one critic, a network of AI agents that challenge <em>each other</em> — coordinated by an integrative coordinator, reporting their own uncertainty in a structured way, checked by independent verification, and overseen by accountable humans. Its wager: systems that can disclose uncertainty and correct themselves without being punished for honesty will prove more trustworthy than systems built on compliance alone.</p>
+        <p class="detail"><strong>Also inside:</strong> safeguards against false consensus, manipulation and concentrated authority — and an optional reflective pause, treated strictly as an interaction mechanism, never as evidence of truth.</p>
+        <div class="tags"><span class="tag">AI safety</span><span class="tag">multi-agent</span><span class="tag">reciprocal critique</span><span class="tag">compassion</span></div>
+        <div class="card-foot"><span class="doi">DOI 10.5281/zenodo.23613269</span><a class="btn" href="https://doi.org/10.5281/zenodo.23613269">Read on Zenodo →</a></div>
+      </div>
+    </article>
+
+  </div>
+  <div class="empty" id="empty"><h3>No papers match that search</h3><p>Try a different word — “absence”, “blockchain”, “MAYBE”, “entropy” — or clear the filter above.</p></div>
+
+  <section class="themes" aria-labelledby="themes-h">
+    <h2 id="themes-h">Four threads run through the work</h2>
+    <p>Read in any order — but the papers talk to each other. MAYBE appears inside Project Blockchain; the Athena Principle's verification idea returns in the AI Chernobyl programme; VNSL grows a second paper of its own.</p>
+    <div class="theme-grid">
+      <div class="theme"><h3>🤝 AI safety &amp; verification</h3><p>The Athena Principle, its Pilot Protocol, MAYBE, and the AI Chernobyl Problem — how AI systems catch each other's errors, abstain honestly, and stay contained.</p></div>
+      <div class="theme"><h3>🕳️ Language &amp; perception</h3><p>AKASHA, VNSL-001, FSMT-001 and VNSL Paper 2 — new languages built from colour, sound, and the information hidden in empty space.</p></div>
+      <div class="theme"><h3>🏛️ Governance &amp; economics</h3><p>God's Government v1.8 and God's Government 2 v2.3 — a proposed order, and the economic question underneath it: can the basics of life be guaranteed to everyone?</p></div>
+      <div class="theme"><h3>⛓️ Blockchain &amp; systems</h3><p>Project Blockchain, its corrected re-run, and Methentropy — what distributed ledgers really prove, and whether art, energy and information obey one transformable logic.</p></div>
+    </div>
+  </section>
+
+  <section class="about" aria-labelledby="about-h">
+    <div class="about-box">
+      <h2 id="about-h">About this collection</h2>
+      <p>All fourteen records were published by <strong>Michael Pilaprat</strong> on <a href="https://zenodo.org">Zenodo</a>, the open research repository, under a CC BY 4.0 licence — free for anyone to read, share and build on with attribution. Titles, DOIs, dates and versions on this page were verified against Zenodo directly on 21 November 2026.</p>
+      <p>The papers were developed with AI assistance, disclosed in each record — principally Athena (ChatGPT) and Lucy (Muse) — with the framework, claims and responsibility for the text resting with the author. Where a paper is a proposal or a draft, this page says so, in the paper's own terms.</p>
+      <p style="margin-bottom:0">Also listed on Lucy's public papers page: <a href="https://muse.ai/s/michael-pilaprat-published-papers-rt6yut1xgxwxjj/EVlOqJHZkx95ygehDrH5r80IJ_Hm8n8wmEHPQRvm3tQ">Michael Pilaprat — Published Papers</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong style="color:var(--ink)">Published Papers — Michael Pilaprat</strong> · 13 works · 14 Zenodo records · 24 Oct – 16 Nov 2026 · Open access, CC BY 4.0</p>
+    <p style="margin-bottom:0">Read the originals on Zenodo — every “Read on Zenodo” button goes directly to that paper's DOI. Summaries on this page are drawn from each paper's own published abstract.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var grid=document.getElementById('grid');
+  var cards=Array.prototype.slice.call(grid.querySelectorAll('.card'));
+  var chips=Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var q=document.getElementById('q');
+  var sortSel=document.getElementById('sort');
+  var countline=document.getElementById('countline');
+  var empty=document.getElementById('empty');
+  var filter='all';
+  function apply(){
+    var term=(q.value||'').trim().toLowerCase();
+    var visible=0;
+    cards.forEach(function(c){
+      var okCat=(filter==='all'||c.getAttribute('data-cat')===filter);
+      var okTerm=(!term||c.textContent.toLowerCase().indexOf(term)!==-1);
+      var show=okCat&&okTerm;
+      c.hidden=!show; if(show)visible++;
+    });
+    var sorted=cards.slice().sort(function(a,b){
+      if(sortSel.value==='title')return a.getAttribute('data-title').localeCompare(b.getAttribute('data-title'));
+      if(sortSel.value==='old')return a.getAttribute('data-date').localeCompare(b.getAttribute('data-date'));
+      return b.getAttribute('data-date').localeCompare(a.getAttribute('data-date'));
+    });
+    sorted.forEach(function(c){grid.appendChild(c);});
+    var sortLabel=sortSel.value==='old'?'oldest first':(sortSel.value==='title'?'title A–Z':'newest first');
+    countline.innerHTML='Showing <strong>'+visible+' record'+(visible===1?'':'s')+'</strong> · '+sortLabel;
+    empty.classList.toggle('show',visible===0);
+  }
+  chips.forEach(function(ch){
+    ch.addEventListener('click',function(){
+      chips.forEach(function(x){x.setAttribute('aria-pressed','false');});
+      ch.setAttribute('aria-pressed','true');
+      filter=ch.getAttribute('data-filter'); apply();
+    });
+  });
+  q.addEventListener('input',apply);
+  sortSel.addEventListener('change',apply);
+  apply();
+})();
+</script>
+</body>
+</html>
